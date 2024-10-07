@@ -48,7 +48,7 @@ const useSignup = () => {
     try {
       setLoading(true)
 
-      const res = await fetch(`${import.meta.env.VITE_SERVER}/api/auth/signup`, {
+      const res = await fetch(`https://chatapp-backend-lbyl.onrender.com/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
