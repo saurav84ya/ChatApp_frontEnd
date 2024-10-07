@@ -4,7 +4,7 @@ import toast from "react-hot-toast"
 const useGetConversations = () => {
   const [loading, setLoading] = useState(false)
   const [conversations, setConversations] = useState([])
-  const apiUrl = import.meta.env.VITE_SERVER;
+  const apiUrl = "https://chatapp-backend-lbyl.onrender.com";
 
 
   useEffect(() => {
