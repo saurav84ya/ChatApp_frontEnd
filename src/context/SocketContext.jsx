@@ -14,7 +14,7 @@ export const SocketContextProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([])
   const { authUser } = useAuthContext()
 
-  const apiUrl = import.meta.env.VITE_SERVER;
+  const apiUrl = "https://chatapp-backend-lbyl.onrender.com";
   console.log(apiUrl)
 
 
