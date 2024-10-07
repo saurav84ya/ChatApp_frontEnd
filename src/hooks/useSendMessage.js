@@ -12,7 +12,7 @@ const useSendMessage = () => {
 
       // Fetch request with Authorization header
       const res = await fetch(
-        `${import.meta.env.VITE_SERVER}/api/messages/send/${selectedConversation._id}`,
+        `https://chatapp-backend-lbyl.onrender.com/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           headers: {
