@@ -3,7 +3,7 @@ import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
 
 const useGetMessages = () => {
-  const apiUrl = import.meta.env.VITE_SERVER;
+  const apiUrl = "https://chatapp-backend-lbyl.onrender.com";
 
   
   const [loading, setLoading] = useState(false);
