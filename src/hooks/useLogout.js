@@ -10,7 +10,7 @@ const useLogout = () => {
     try {
       setLoading(true)
 
-      const res = await fetch(`${import.meta.env.VITE_SERVER}/api/auth/logout`, {
+      const res = await fetch(`https://chatapp-backend-lbyl.onrender.com/api/auth/logout`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
