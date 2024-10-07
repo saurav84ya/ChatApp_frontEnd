@@ -22,7 +22,7 @@ const useLogin = () => {
     }
 
 
-  const apiUrl = import.meta.env.VITE_SERVER;
+  const apiUrl ="https://chatapp-backend-lbyl.onrender.com";
 
       const res = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
