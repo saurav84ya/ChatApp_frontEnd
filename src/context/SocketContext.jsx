@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
   const { authUser } = useAuthContext()
 
   const apiUrl = "https://chatapp-backend-lbyl.onrender.com";
-  console.log(apiUrl)
+
 
 
   useEffect(() => {
