@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import styled from "styled-components";
 import useConversation from "../../zustand/useConversation";
@@ -68,9 +68,15 @@ const SearchInput = () => {
       toast.error("No user found with this username");
     }
   };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 800);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={`${isMobile ? "py-4 px-1" : ""}`} >
       <Input
         type="text"
         placeholder="Search..."

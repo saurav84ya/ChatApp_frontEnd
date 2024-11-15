@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import styled from "styled-components";
 import useLogout from "../../hooks/useLogout";
 
 const LogoutButton = () => {
   const { loading, logout } = useLogout();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
 
   return (
-    <ButtonWrapper>
+    <ButtonWrapper className=" " >
       {!loading ? (
         <LogoutIcon onClick={logout} />
       ) : (
