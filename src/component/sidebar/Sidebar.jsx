@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import Coversations from "./Coversations";
 import LogoutButton from "./LogoutButton";
+import graphImage from '../../assets/graph.png';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,12 +22,17 @@ const Sidebar = () => {
     <>
       {/* Toggle Button */}
       {isMobile && (
+        <div
+        className="bg-cover bg-center h-[50px] w-[50px] bg-green-300 p-2
+         fixed top-[45%] left-[0%] z-50 rounded-full shadow-lg
+          flex items-center justify-center text-black"
+      >
         <button
           onClick={toggleSidebar}
-          className="fixed bottom-[5%] left-[45%] z-50 p-2 bg-blue-600 text-white rounded-full shadow-lg"
         >
           {!isOpen ? <i className="ri-menu-line text-[29px]"></i> :<i className="ri-close-large-line text-[29px]"></i>}
         </button>
+        </div>
       )}
 
       {/* Sidebar Container */}
@@ -36,7 +42,7 @@ const Sidebar = () => {
             ? `fixed top-0 left-0 h-full w-auto z-10  bg-white shadow-lg transform transition-transform duration-300 ${
                 isOpen ? "translate-x-0" : "-translate-x-full"
               }`
-            : "border-r border-gray-300 p-4 w-64"
+            : "border-r border-gray-300 p-4 w-auto"
         }`}
       >
         <SearchInput />
@@ -49,3 +55,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

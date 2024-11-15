@@ -5,39 +5,29 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
-import styled from "styled-components";
-
 
 const App = () => {
   const { authUser } = useAuthContext();
 
   return (
-    <AppContainer>
+    <div className=" lg:p-4 h-screen flex items-center justify-center">
       <Routes>
         <Route
           path="/"
-          element={authUser ? <Home /> : <Navigate to={"/login"} />}
+          element={authUser ? <Home /> : <Navigate to="/login" />}
         />
         <Route
           path="/login"
-          element={authUser ? <Navigate to={"/"} /> : <Login />}
+          element={authUser ? <Navigate to="/" /> : <Login />}
         />
         <Route
           path="/signup"
-          element={authUser ? <Navigate to={"/"} /> : <SignUp />}
+          element={authUser ? <Navigate to="/" /> : <SignUp />}
         />
       </Routes>
       <Toaster />
-    </AppContainer>
+    </div>
   );
 };
 
 export default App;
-
-const AppContainer = styled.div`
-  padding: 1rem;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
