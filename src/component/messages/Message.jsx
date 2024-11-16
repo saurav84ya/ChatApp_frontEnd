@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import userAvatar from "../../assets/user.png";
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
@@ -14,59 +13,59 @@ const Message = ({ message }) => {
   const formattedTime = formatTime(message.createdAt);
 
   return (
-    <ChatContainer messageFromMe={messageFromMe}>
-      <ChatImage>
-        <Avatar src={profilePic || userAvatar} alt="User Avatar" />
-      </ChatImage>
+    <div
+      className={`flex items-start mb-4 relative ${
+        messageFromMe ? "justify-end" : "justify-start"
+      }`}
+    >
+      {/* Timestamp at the start only if the message is from me */}
+      {messageFromMe && (
+        <div className="text-xs text-gray-600 opacity-70 flex items-center mr-2">
+          {formattedTime}
+        </div>
+      )}
 
-      <ChatBubble messageFromMe={messageFromMe}>
+      {/* User avatar for received messages */}
+      {!messageFromMe && (
+        <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
+          <img
+            src={profilePic || userAvatar}
+            alt="User Avatar"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      {/* Message bubble */}
+      <div
+        className={`max-w-[75%] p-3 rounded-lg ${
+          messageFromMe
+            ? "bg-green-600 text-white"
+            : "bg-gray-200 text-black"
+        }`}
+      >
         {message.message}
-      </ChatBubble>
+      </div>
 
-      <ChatFooter>
-        {formattedTime}
-      </ChatFooter>
-    </ChatContainer>
+      {/* User avatar for sent messages */}
+      {messageFromMe && (
+        <div className="w-10 h-10 rounded-full overflow-hidden ml-3">
+          <img
+            src={profilePic || userAvatar}
+            alt="User Avatar"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      {/* Timestamp at the end for received messages */}
+      {!messageFromMe && (
+        <div className="text-xs text-gray-600 opacity-70 flex items-center ml-2">
+          {formattedTime}
+        </div>
+      )}
+    </div>
   );
 };
 
 export default Message;
-
-const ChatContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: ${(props) => (props.messageFromMe ? "flex-end" : "flex-start")};
-  margin-bottom: 1rem;
-`;
-
-const ChatImage = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 0.75rem;
-`;
-
-const Avatar = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const ChatBubble = styled.div`
-  background-color: ${(props) => (props.messageFromMe ? "#38A169" : "#E2E8F0")};
-  color: ${(props) => (props.messageFromMe ? "white" : "black")};
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  max-width: 75%;
-  word-wrap: break-word;
-`;
-
-const ChatFooter = styled.div`
-  opacity: 0.5;
-  font-size: 0.75rem;
-  color: #1E293B;
-  display: flex;
-  gap: 0.25rem;
-  align-items: center;
-`;
