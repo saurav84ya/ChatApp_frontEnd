@@ -8,7 +8,7 @@ import { useAuthContext } from "./context/AuthContext";
 
 const App = () => {
   const { authUser } = useAuthContext();
-  console.log( ` server link ${import.meta.env.VITE_API_URL_SERVER}`)
+
 
   return (
     <div className=" lg:p-4 h-screen flex items-center justify-center">
