@@ -10,6 +10,9 @@ const App = () => {
   const { authUser } = useAuthContext();
 
 
+
+  
+
   return (
     <div className=" lg:p-4 h-screen flex items-center justify-center">
       <Routes>
